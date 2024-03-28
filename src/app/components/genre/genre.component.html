@@ -1,0 +1,37 @@
+<div *ngIf="count < 50; else elseBlock">
+  {{genre}} {{idNumber}}: {{count}}
+</div>
+
+switch statement
+
+<!-- Angular Switch -->
+<div [ngSwitch]="genre">
+  <span *ngSwitchCase="'Action'">Action is the selected genre</span>
+  <span *ngSwitchCase="'Horror'">Horror is the selected genre</span>
+  <span *ngSwitchCase="'Thriller'">Thriller is the selected genre</span>
+  <span *ngSwitchCase="'Adventure'">Adventure is the selected genre</span>
+  <span *ngSwitchDefault>Unknown selected genre</span>
+</div>
+
+@switch (genre) {
+  @case ('Action') {
+    <span>Action is the selected genre</span>
+  }
+  @default {
+    <span>No selected genre</span>
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+<ng-template #elseBlock>
+  <div>Else</div>
+</ng-template>
