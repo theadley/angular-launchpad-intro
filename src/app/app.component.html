@@ -1,46 +1,15 @@
-<h1>Hello world</h1>
-
-<app-search [(bob)]="searchText" />
-<input type="text" [(ngModel)]="searchText">
-{{searchText}}
-
-<h2>Average Mark: {{ marks | averageMark | number: '1.2-2' }}%</h2>
-
-<app-render-seasons />
-
-<button (click)="isSeasonListShown = !isSeasonListShown">{{isSeasonListShown ? 'Hide' : 'Show'}} Season List</button>
-@if (isSeasonListShown) {
-  <app-seasons-list/>
-}
-
-<h2>Users:</h2>
-<ul>
-  @for (user of userNames; track user) {
-    <li>
-      {{user}}
-      @if (isUserAdmin) {
-        <button>DELETE</button>
-      } @else {
-        <button>Request removal</button>
+<nz-layout>
+  <nz-header>
+    <div class="logo">
+      Hello<span>Angular</span>
+    </div>
+    <ul nz-menu nzTheme="dark" nzMode="horizontal">
+      @for (route of routesLocal; track route) {
+        <li nz-menu-item [routerLink]="route">{{route | uppercase}}</li>
       }
-    </li>
-  } @empty {
-    <li>No Users</li>
-  }
-</ul>
-
-<app-genre [genreName]="genre" *ngFor="let genre of genres" />
-
-<h2>My Favourite Shows:</h2>
-<ul>
-  <ng-container *ngIf="series.length; else noSeries">
-    <li *ngFor="let show of series">{{show}}</li>
-  </ng-container>
-  <ng-template #noSeries>
-    <li>No Series in Favourites</li>
-  </ng-template>
-</ul>
-
-<app-clothes />
-
-<app-comic />
+    </ul>
+  </nz-header>
+  <nz-content>
+    <router-outlet/>
+  </nz-content>
+</nz-layout>

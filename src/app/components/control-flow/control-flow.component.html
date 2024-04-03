@@ -1,0 +1,30 @@
+<button (click)="isSeasonListShown = !isSeasonListShown">{{isSeasonListShown ? 'Hide' : 'Show'}} Season List</button>
+@if (isSeasonListShown) {
+  <app-seasons-list/>
+}
+
+<h2>Users:</h2>
+<ul>
+  @for (user of userNames; track user) {
+    <li>
+      {{user}}
+      @if (isUserAdmin) {
+        <button>DELETE</button>
+      } @else {
+        <button>Request removal</button>
+      }
+    </li>
+  } @empty {
+    <li>No Users</li>
+  }
+</ul>
+
+<h2>My Favourite Shows:</h2>
+<ul>
+  <ng-container *ngIf="series.length; else noSeries">
+    <li *ngFor="let show of series">{{show}}</li>
+  </ng-container>
+  <ng-template #noSeries>
+    <li>No Series in Favourites</li>
+  </ng-template>
+</ul>
