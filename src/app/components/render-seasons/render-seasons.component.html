@@ -1,0 +1,9 @@
+@if(seasons$ | async; as seasons) {
+  @for(season of seasons.MRData.SeasonTable.Seasons; track season.url) {
+    {{season.season}}
+  }
+}
+
+<p>
+  {{ seasons$ | async | json }}
+</p>

@@ -1,6 +1,17 @@
 <h1>Hello world</h1>
 
-<app-seasons-list/>
+<app-search [(bob)]="searchText" />
+<input type="text" [(ngModel)]="searchText">
+{{searchText}}
+
+<h2>Average Mark: {{ marks | averageMark | number: '1.2-2' }}%</h2>
+
+<app-render-seasons />
+
+<button (click)="isSeasonListShown = !isSeasonListShown">{{isSeasonListShown ? 'Hide' : 'Show'}} Season List</button>
+@if (isSeasonListShown) {
+  <app-seasons-list/>
+}
 
 <h2>Users:</h2>
 <ul>

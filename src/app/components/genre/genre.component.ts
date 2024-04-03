@@ -24,7 +24,7 @@ export class GenreComponent {
 
 
   constructor() {
-    console.log(this.genre)
+    // console.log(this.genre)
 
     setInterval(() => {
       this.count++;

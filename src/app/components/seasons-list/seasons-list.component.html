@@ -1,6 +1,10 @@
-<button (click)="handleGetSeasonsButtonPress($event)">Fetch Seasons</button>
+<button (click)="handleGetSeasonsButtonPress($event)">{{ 'Fetch Seasons' | uppercase }}</button>
 
 
-@for(season of seasons; track season) {
+
+<input placeholder="Filter seasons" [(ngModel)]="searchTerm">
+<p>{{searchTerm}}</p>
+
+@for(season of (seasons | filterSeasons: searchTerm); track season) {
   <p>{{season}}</p>
 }
